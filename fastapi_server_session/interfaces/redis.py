@@ -47,4 +47,4 @@ class RedisSessionInterface(BaseSessionInterface):
             return {}
 
     def _delete_session(self, session_id: str):
-        self.redis.delete(session_id)
+        self.redis.delete(str(session_id))

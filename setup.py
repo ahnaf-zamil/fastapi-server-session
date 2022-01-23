@@ -26,7 +26,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(
-    name="FastAPI Server-sided Session",
+    name="fastapi-server-session",
     author=fastapi_server_session.__author__,
     author_email=fastapi_server_session.__email__,
     version=fastapi_server_session.__version__,
@@ -44,5 +44,5 @@ setup(
     python_requires=">=3.6",
     include_package_data=True,
     exclude=("__pycache__",),
-    install_requires=["fastapi"],
+    install_requires=["fastapi", "redis"],
 )
