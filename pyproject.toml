@@ -1,0 +1,15 @@
+[tool.black]
+line-length = 90
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.nox
+  | \.venv
+  | migrations
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''

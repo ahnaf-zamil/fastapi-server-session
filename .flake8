@@ -1,0 +1,17 @@
+[flake8]
+ignore = E722
+
+exclude = 
+    .git,
+    __pycache__,
+    old,
+    build,
+    dist,
+
+max-complexity = 20
+max-function-length = 130
+docstring-convention = google
+max-line-length = 150
+
+per-file-ignores = 
+    fastapi_server_session/__init__.py: F403, F401
