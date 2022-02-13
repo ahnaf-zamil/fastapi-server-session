@@ -31,6 +31,18 @@ except ModuleNotFoundError:
 
 
 class MongoSessionInterface(BaseSessionInterface):
+    """
+    Interface for Mongo DB.
+
+    args:
+        client: MongoDB Client
+    kwargs:
+        db: database name under which sessions are stored
+        collection: collection name under which sessions are stored
+    optional:
+    All Optional parameters are kwargs
+        expire: timedelta object for ttl
+    """
     def __init__(
         self,
         client: pymongo.MongoClient,
