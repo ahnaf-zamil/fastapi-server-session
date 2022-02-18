@@ -10,17 +10,39 @@ At the moment, it supports using Redis as the session datastore. But in the futu
 
 ## Quickstart
 
+#### For Redis Backend
 ```py
-from fastapi import Depends, FastAPI
 from fastapi_server_session import SessionManager, RedisSessionInterface, Session
-
 import redis
 
-api = FastAPI()
 
 session_manager = SessionManager(
     interface=RedisSessionInterface(redis.from_url("redis://localhost"))
 )
+```
+
+#### For Mongo Backend
+```py
+from fastapi_server_session import SessionManager, MongoSessionInterface, Session
+import pymongo
+
+session_manager = SessionManager(
+    interface=MongoSessionInterface(
+        pymongo.MongoClient(
+            "mongodb://localhost:27017"
+        ),
+        db="users",
+        collection="session",
+    )
+)
+
+```
+
+```py
+from fastapi import Depends, FastAPI
+
+api = FastAPI()
+
 
 @api.get("/set")
 async def set_session(session: Session = Depends(session_manager.use_session)):
