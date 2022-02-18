@@ -6,7 +6,7 @@
 
 FastAPI Server Session is a dependency-based extension for FastAPI that adds support for server-sided session management.
 
-At the moment, it supports using Redis and Mongo as the session datastore. But in the future, it will support even more datastores including but not limited to SQL, etc.
+At the moment, it supports using Redis and MongoDB as the session datastore. But in the future, it will support even more datastores including but not limited to SQL, etc.
 
 ## Quickstart
 
