@@ -17,7 +17,7 @@ import redis
 
 
 session_manager = SessionManager(
-    interface=RedisSessionInterface(redis.from_url("redis://localhost"))
+    interface=RedisSessionInterface(redis.from_url("redis://localhost"), expiration=timedelta(days=7))
 )
 ```
 
