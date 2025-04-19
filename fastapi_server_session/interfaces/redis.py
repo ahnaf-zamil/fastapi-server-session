@@ -32,13 +32,15 @@ import json
 
 
 class RedisSessionInterface(BaseSessionInterface):
-    def __init__(self, redis_client: redis.Redis):
+    def __init__(self, redis_client: redis.Redis, expiration: timedelta | None = None):
         self.redis = redis_client
+        # Session expiration default is 15 days
+        self.expiration = expiration or timedelta(days=15)
 
     def _set_session_data(self, session_id: str, data: dict):
         self.redis.set(
-            session_id, json.dumps(data), ex=timedelta(days=15)
-        )  # Session expires after 15 days
+            session_id, json.dumps(data), ex=self.expiration
+        )
 
     def _get_session_data(self, session_id: str) -> dict:
         try:
